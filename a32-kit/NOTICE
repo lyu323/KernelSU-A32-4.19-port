@@ -1,0 +1,32 @@
+KernelSU A32 4.19-port-kit
+===========================
+
+Upstream: tiann/KernelSU, tag v0.9.5
+Upstream commit: b766b98513b5a7eb33bc1c4a76b5702bf1288f07
+Target device: OPPO A32 (PDVM00 / OP4E35), ColorOS V11.1 / Android 11
+SoC: Qualcomm SM4250 (Snapdragon 460)   Kernel: 4.19.152-perf+
+Firmware: PDVM00_11_C.29
+
+The root source tree of this repository is a byte-for-byte copy of the
+upstream v0.9.5 tag. No upstream source file was modified.
+
+Licenses:
+  kernel/**            GPL-2.0-only        (kernel/LICENSE)
+  everything else      GPL-3.0-or-later    (LICENSE)
+
+Added by lyu323 (2026-11-24), all NEW files with SPDX headers:
+  a32-kit/**                  device-specific port docs, read-only + semi-auto
+                              scripts, defconfig fragments
+  A32_NOTICE.md / README_A32.md / A32_RELEASE_NOTES.md
+  .github/workflows/publish-a32-kit.yml
+
+If you build and distribute ANY binary from this repository (boot image,
+kernelsu.ko, Manager APK, ...), you MUST accompany it with the corresponding
+source for that exact build and both license texts. A private repository is
+only suitable for keeping your own build artifacts; it cannot be used to
+distribute a closed-source derivative publicly.
+
+KernelSU v1.0+ only supports GKI 2.0 (kernel 5.10+). Kernel 4.19 is within
+the official 4.14+ backport range but is still non-GKI: upstream provides NO
+boot image for it. This repository contains NO flashable root package and
+makes NO claim that a prebuilt adapted APK exists.
