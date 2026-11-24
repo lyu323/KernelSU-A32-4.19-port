@@ -50,7 +50,11 @@ fi
 if grep -q 'drivers/kernelsu/Kconfig' "$KC" 2>/dev/null; then
   echo "  [skip] Kconfig 已 source kernelsu"
 else
-  sed -i '/endmenu/i\source "drivers/kernelsu/Kconfig"' "$KC"
+  # 不用 sed -i：受限目录里它 chmod 保留权限会失败；改为生成临时文件再原样写回
+  TMP="$(mktemp)"
+  awk '/^endmenu/ && !done { print "source \"drivers/kernelsu/Kconfig\""; done=1 } { print }' "$KC" > "$TMP"
+  cat "$TMP" > "$KC"
+  rm -f "$TMP"
   echo "  [ok]   Kconfig 插入 source \"drivers/kernelsu/Kconfig\""
 fi
 
